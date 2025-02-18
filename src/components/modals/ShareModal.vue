@@ -129,7 +129,7 @@ export default defineComponent({
       try {
         window.open(url, "_blank");
       } catch (error) {
-        console.error("Failed to open share URL:", error);
+        console.log("Failed to open share URL:", error);
       }
     };
 

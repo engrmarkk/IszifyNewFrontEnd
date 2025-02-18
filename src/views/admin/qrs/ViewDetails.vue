@@ -201,7 +201,7 @@ const handleCustomiseQrcode = (code: any) => {
     selectedQrCode.value = code;
     qrModal.value = true;
   } else {
-    console.error("QR code data is missing or incomplete", code);
+    console.log("QR code data is missing or incomplete", code);
   }
 };
 
@@ -259,7 +259,7 @@ const regenerateQrCode = () => {
     if (canvasContainer) {
       qrCode.value.append(canvasContainer);
     } else {
-      console.error(`Canvas container for code ID ${code.id} not found`);
+      console.log(`Canvas container for code ID ${code.id} not found`);
     }
   }
 };
@@ -291,7 +291,7 @@ onMounted(async () => {
       if (canvasContainer) {
         qrCode.value.append(canvasContainer);
       } else {
-        console.error(`Canvas container for code ID ${code.id} not found`);
+        console.log(`Canvas container for code ID ${code.id} not found`);
       }
     }
   });

@@ -4,15 +4,15 @@ export default {
   darkMode: "class",
   theme: {
     extend: {
-      fontSize: {
-        sm: "0.8rem",
-        base: "1rem",
-        xl: "1.25rem",
-        "2xl": "1.25rem",
-        "3xl": "1.953rem",
-        "4xl": "1.953rem",
-        "5xl": "2.441rem",
-      },
+      // fontSize: {
+      //   sm: "0.8rem",
+      //   base: "1rem",
+      //   xl: "1.25rem",
+      //   "2xl": "1.25rem",
+      //   "3xl": "1.953rem",
+      //   "4xl": "1.953rem",
+      //   "5xl": "2.441rem",
+      // },
       colors: {
         primary: {
           shades: "#62fd75",

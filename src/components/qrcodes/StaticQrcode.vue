@@ -1,40 +1,33 @@
 <!-- eslint-disable vue/no-side-effects-in-computed-properties -->
 <template>
-  <section class="pt-14 container mx-auto">
+  <section class="">
     <!-- Loading section -->
     <section v-if="loading">
       <p>Loading...</p>
     </section>
     <div v-else class="relative">
-      <!-- Header -->
-      <div
-        class="block w-full bg-gradient-to-b from-primary-shades text-center px-5 to-primary bg-clip-text font-bold text-transparent text-3xl sm:text-4xl"
-      >
-        QR Code Generator: Create your Free QR Code
-      </div>
       <!-- Main content -->
-      <div
-        class="flex flex-col lg:flex-row gap-5 mt-5 p-5 md:p-10 mx-auto w-[80%]"
-      >
+      <div class="flex flex-col lg:flex-row sm:items-center gap-5 mt-5 p-5">
         <!-- QR Code Categories and Dynamic Form -->
         <div class="flex-1 overflow-y-scroll h-full">
-          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
-            <div v-for="category in categories" :key="category.name">
-              <div
-                @click="handleCats(category.name)"
-                class="flex border rounded-md p-3 gap-3 items-center hover:cursor-pointer"
+          <div>
+            <p class="text-sm md:text-base font-bold">Select Data</p>
+            <select v-model="categoryType" class="v-input w-full">
+              <option
+                v-for="category in categories"
+                :key="category?.name"
+                :value="category?.name"
+                class="flex border font-bold rounded-md p-3 gap-3 items-center hover:cursor-pointer"
                 :class="
-                  activeCat === category.name ? 'bg-info-tint text-info' : ''
+                  activeCat === category?.name ? 'bg-info-tint text-info' : ''
                 "
               >
-                <img :src="getIconSrc(category.name)" alt="" />
-                <p class="font-bold">{{ category.name }}</p>
-              </div>
-            </div>
+                {{ category?.name }}
+              </option>
+            </select>
           </div>
-
-          <div class="mt-10">
-            <p class="text-xs font-bold">Title (Optional)</p>
+          <div class="mt-5">
+            <p class="text-sm md:text-base font-bold">Title (Optional)</p>
             <input
               v-model="qrDataUpdated.title"
               type="text"
@@ -45,7 +38,7 @@
           </div>
 
           <!-- Dynamic Form Component -->
-          <section class="mt-5">
+          <section>
             <component
               :is="currentFormComponent"
               @handle-submit="handlePostQrCode"
@@ -54,23 +47,19 @@
         </div>
 
         <!-- QR Code Display and Options -->
-        <div
-          class="w-full pb-10 md:pb-0 mb-10 md:mb-0 md:w-[350px] h-full md:h-[80vh]"
-        >
-          <h2
-            class="text-center pb-5 font-semibold capitalize text-base md:text-lg"
-          >
+        <div class="w-full md:w-[350px] h-full mt-5 md:mt-0">
+          <h2 class="text-center pb-5 font-bold capitalize text-lg md:text-xl">
             Preview
           </h2>
           <div
             v-if="qrCodeDataUrl"
-            class="w-[200px] md:w-[300px] h-[200px] md:h-[300px] z-10 flex justify-center mx-auto border shadow-sm"
+            class=":w-[200px] h-[200px] z-10 flex justify-center mx-auto shadow-sm"
           >
             <img :src="qrCodeDataUrl" alt="QR Code" />
           </div>
           <button
             @click="handlePostQr"
-            class="px-3 bg-info w-full md:w-[300px] text-xs btn hover:bg-info-tint hover:text-info font-bold py-2 text-white rounded-md capitalize flex justify-center mx-auto mt-3"
+            class="btnn w-[200px] mx-auto justify-center flex"
           >
             Design your code
           </button>
@@ -247,7 +236,7 @@ const generateQRCode = async (value) => {
     // Convert string to object if needed
     qrData.value = { data: qrData.value };
   } catch (error) {
-    console.error("Error generating QR code:", error);
+    console.log("Error generating QR code:", error);
   }
 };
 

@@ -183,7 +183,7 @@ const generateQRCode = async () => {
     // Convert string to object if needed
     qrData.value = { data: qrData.value };
   } catch (error) {
-    console.error("Error generating QR code:", error);
+    console.log("Error generating QR code:", error);
   }
 };
 

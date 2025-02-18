@@ -230,7 +230,7 @@ watch(details, async (newDetails) => {
       // Append the new QR code
       qrCodeInstance.append(canvasContainer);
     } else {
-      console.error(`Canvas container for code ID ${newDetails.id} not found`);
+      console.log(`Canvas container for code ID ${newDetails.id} not found`);
     }
   }
 });

@@ -1,56 +1,7 @@
 <template>
-  <div class="mt-10 bg-primary">
-    <div class="relative bg-white py-20 md:py-32">
-      <div class="absolute inset-x-0 bottom-0">
-        <svg
-          viewBox="0 0 224 12"
-          fill="currentColor"
-          class="w-full -mb-1 text-primary"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0,0 C48.8902582,6.27314026 86.2235915,9.40971039 112,9.40971039 C137.776408,9.40971039 175.109742,6.27314026 224,0 L224,12.0441132 L0,12.0441132 L0,0 Z"
-          ></path>
-        </svg>
-      </div>
-      <div
-        class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20"
-      >
-        <div
-          class="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl sm:text-center"
-        >
-          <h2
-            class="mb-6 font-sans text-3xl text-center font-bold tracking-tight sm:text-4xl sm:leading-none text-primary"
-          >
-            Subscribe to our newsletter
-          </h2>
-          <p class="mb-6 text-base md:text-lg">
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-            quae. explicabo. Sed ut perspiciatis unde omnis.
-          </p>
-          <form
-            class="flex flex-col gap-3 items-center w-full mb-4 md:flex-row md:px-16"
-          >
-            <input
-              placeholder="Email"
-              required=""
-              type="text"
-              class="flex-grow w-full v-input mt-0 shadow-md py-3"
-            />
-            <a
-              href="/"
-              class="inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-primary transition duration-200 rounded shadow-md md:w-auto hover:text-deep-purple-900 bg-primary-tint hover:bg-primary hover:text-white focus:shadow-outline focus:outline-none"
-            >
-              Subscribe
-            </a>
-          </form>
-        </div>
-      </div>
-    </div>
-
+  <div class="bg-primary">
     <!-- footer -->
-    <div class="mx-auto w-full container mt-10 md:py-10 px-4 xl:px-0">
+    <div class="mx-auto w-full container mt-10 py-10 md:py-20 px-4">
       <div
         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 justify-between md:flex-row"
       >
@@ -63,11 +14,9 @@
               </div></router-link
             >
           </div>
-          <p
-            class="mt-[18px] text-xs sm:text-sm lg:text-base font-normal text-white/[80%]"
-          >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugit
-            non. Incidunt dolorum adipisci.
+          <p class="mt-[18px] text-base md:text-lg text-white">
+            Iszify is a platform that allows you to create and manage all your
+            links in one place.
           </p>
           <div class="flex mt-8 space-x-6 text-white">
             <a class="hover:opacity-75" href target="_blank" rel="noreferrer">
@@ -143,28 +92,28 @@
             <ul>
               <li class="mt-[15px]">
                 <router-link
-                  class="text-deutziawhite hover:text-deutziawhite/80 font-inter text-[15px] font-normal hover:font-semibold"
+                  class="text-base md:text-lg hover:font-semibold"
                   to="/"
                   >Home</router-link
                 >
               </li>
               <li class="mt-[15px]">
                 <router-link
-                  class="text-deutziawhite hover:text-deutziawhite/80 font-inter text-[15px] font-normal hover:font-semibold"
+                  class="text-base md:text-lg hover:font-semibold"
                   to="/products/pages/qr-code"
                   >Qr Codes</router-link
                 >
               </li>
               <li class="mt-[15px]">
                 <router-link
-                  class="text-deutziawhite hover:text-deutziawhite/80 font-inter text-[15px] font-normal hover:font-semibold"
+                  class="text-base md:text-lg hover:font-semibold"
                   to="/products/pages/shorlinks"
                   >ShortLinks</router-link
                 >
               </li>
               <li class="mt-[15px]">
                 <router-link
-                  class="text-deutziawhite hover:text-deutziawhite/80 font-inter text-[15px] font-normal hover:font-semibold"
+                  class="text-base md:text-lg hover:font-semibold"
                   to="/products/pages/link-in-bio"
                   >BioLinks</router-link
                 >
@@ -185,28 +134,28 @@
             <ul>
               <li class="mt-[15px]">
                 <a
-                  class="text-deutziawhite hover:text-deutziawhite/80 font-inter text-[15px] font-normal hover:font-semibold"
+                  class="text-base md:text-lg hover:font-semibold"
                   href="/become-a-tutor"
                   >Contact</a
                 >
               </li>
               <li class="mt-[15px]">
                 <a
-                  class="text-deutziawhite hover:text-deutziawhite/80 font-inter text-[15px] font-normal hover:font-semibold"
+                  class="text-base md:text-lg hover:font-semibold"
                   href="/plans-and-pricing"
                   >Plans and pricing</a
                 >
               </li>
               <li class="mt-[15px]">
                 <a
-                  class="text-deutziawhite hover:text-deutziawhite/80 font-inter text-[15px] font-normal hover:font-semibold"
+                  class="text-base md:text-lg hover:font-semibold"
                   href="/terms-and-conditions"
                   >Terms and conditions</a
                 >
               </li>
               <li class="mt-[15px]">
                 <a
-                  class="text-deutziawhite hover:text-deutziawhite/80 font-inter text-[15px] font-normal hover:font-semibold"
+                  class="text-base md:text-lg hover:font-semibold"
                   href="/privacy-policy"
                   >Privcay policy</a
                 >
@@ -241,12 +190,10 @@
             <div class="ml-[18px]">
               <a
                 href="tel:+911800123444"
-                class="font-Inter text-[14px] font-medium text-white"
+                class="text-sm md:text-base font-medium text-white"
                 >+91 1800123444</a
               >
-              <p class="font-Inter text-[12px] font-medium text-white">
-                Support Number
-              </p>
+              <p class="text-[12px] font-medium text-white">Support Number</p>
             </div>
           </div>
           <div class="mt-[23px] flex">
@@ -269,12 +216,10 @@
             <div class="ml-[18px]">
               <a
                 href="mailto:help@lorem.com"
-                class="font-Inter text-[14px] font-medium text-[#fff]"
+                class="text-sm md:text-base font-medium text-[#fff]"
                 >help@lorem.com</a
               >
-              <p class="font-Inter text-[12px] font-medium text-[#fff]">
-                Support Email
-              </p>
+              <p class="text-[12px] font-medium text-[#fff]">Support Email</p>
             </div>
           </div>
           <div class="mt-[23px] flex">
@@ -297,22 +242,20 @@
             <div class="ml-[18px]">
               <a
                 href="mailto:help@lorem.com"
-                class="font-Inter text-[14px] font-medium text-[#fff]"
+                class="text-sm md:text-base font-medium text-[#fff]"
                 >Sub Nerul, Mumbia, India, 123456</a
               >
-              <p class="font-Inter text-[12px] font-medium text-white">
-                Address
-              </p>
+              <p class="text-[12px] font-medium text-white">Address</p>
             </div>
           </div>
         </div>
       </div>
       <hr class="text-white my-8" />
-      <div class="flex items-center justify-center pb-8">
-        <p class="text-[10px] font-normal text-white md:text-[12px]">
+      <div class="flex items-center justify-center">
+        <p class="text-sm md:text-base text-white md:text-[12px]">
           © Copyright
           <!-- -->2024
-          <!-- -->, All Rights Reserved by YOUR WEBSITES. PVT. LTD
+          <!-- -->, All Rights Reserved by Iszify
         </p>
       </div>
     </div>

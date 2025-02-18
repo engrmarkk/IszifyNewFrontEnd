@@ -1,14 +1,16 @@
 <template>
   <section>
     <AppBar />
-    <div class="py-20 pt-20 md:pt-40">
+    <div class="py-20 pt-20 md:pt-32">
       <div>
         <h2
-          class="text-3xl font-bold text-black-shades text-center mt-12 sm:text-5xl"
+          class="text-2xl sm:text-3xl font-bold text-center mt-12 md:text-5xl"
         >
           Choose your right plan!
         </h2>
-        <p class="max-w-3xl mx-auto mt-4 text-black-shades text-xl text-center">
+        <p
+          class="max-w-3xl mx-auto mt-4 px-5 text-black-shades text-base md:text-lg text-center"
+        >
           Choose an affordable plan that’s packed with the best features for
           engaging your audience, creating customer loyalty, and driving sales.
         </p>
@@ -271,13 +273,13 @@
         </div>
       </div>
     </div>
-    <FooterSection2 />
+    <FooterSection />
   </section>
 </template>
 
 <script setup>
 import AppBar from "@/components/AppBar.vue";
-import FooterSection2 from "@/components/FooterSection2.vue";
+import FooterSection from "@/components/FooterSection.vue";
 </script>
 
 <style scoped></style>

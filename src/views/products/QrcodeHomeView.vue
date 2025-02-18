@@ -157,17 +157,14 @@
           class="text-xs sm:text-sm md:text-base 2xl:text-lg shadow-lg border shadow-slate-50 p-5 rounded-xl hover:cursor-pointer"
         >
           <div class="space-y-3">
-            <div
-              class="w-8 h-8 rounded-md shadow font-inter"
-              :class="content.color"
-            >
+            <div class="w-8 h-8 rounded-md shadow" :class="content.color">
               <img
                 :src="content.icon"
                 alt="content.title"
                 class="w-8 h-8 p-1"
               />
             </div>
-            <h4 class="font-bold text-black">{{ content.title }}</h4>
+            <h4 class="font-bold text-black-shades">{{ content.title }}</h4>
             <p class="text-sm">{{ content.text }}</p>
           </div>
         </div>
@@ -312,15 +309,15 @@
       </div>
     </div>
 
-    <FooterSection2 />
+    <FooterSection />
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useHead } from "@vueuse/head";
 import { ref } from "vue";
 import AppBar from "@/components/AppBar.vue";
-import FooterSection2 from "@/components/FooterSection2.vue";
+import FooterSection from "@/components/FooterSection.vue";
 
 // Dynamically set title and meta tags for this component
 useHead({

@@ -2,9 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
+@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&display=swap");
+
+/* * {
   @apply no-scrollbar;
-}
+} */
 
 /* Require html and body at base layer */
 @layer base {
@@ -24,7 +27,10 @@
   }
 
   body {
-    @apply text-accent  bg-white text-sm relative tracking-wide;
+    font-family: "Darker Grotesque", serif;
+    font-weight: 500;
+    @apply text-accent leading-tight bg-white relative
+      tracking-wide;
   }
   /* For Webkit-based browsers (Chrome, Safari and Opera) */
 
@@ -126,13 +132,19 @@
 
 @layer components {
   .v-input {
-    @apply w-full border-[0.5px] mt-2 text-sm bg-transparent indent-3 py-2.5 border-accent focus:outline focus:outline-info rounded-md placeholder:text-xs md:placeholder:text-sm;
+    @apply w-full border-[0.5px] mt-2 text-base bg-transparent indent-3 py-2.5 border-accent focus:outline focus:outline-info rounded-md placeholder:text-sm md:placeholder:text-base;
   }
   .btn-full {
-    @apply w-full bg-info py-2.5 rounded-lg text-white hover:bg-info-tint hover:text-info font-bold;
+    @apply w-full bg-info-tint py-2.5 rounded-lg text-white hover:bg-info-tint hover:text-info font-bold;
+  }
+  .btnn {
+    @apply bg-info-tint w-full text-info font-semibold px-5 py-2.5 rounded-lg hover:bg-info hover:text-white;
+  }
+  .btnn-outline {
+    @apply border-info w-full border text-info font-semibold px-5 py-2.5 rounded-lg hover:bg-info hover:text-white;
   }
   .btnn-sm {
-    @apply bg-info text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-info-tint hover:text-info;
+    @apply bg-info-tint text-info font-semibold px-5 py-2.5 rounded-lg hover:bg-info hover:text-white;
   }
   .btnn-sm-outline {
     @apply border-info border text-info font-semibold px-5 py-2.5 rounded-lg hover:bg-info-tint hover:text-info;

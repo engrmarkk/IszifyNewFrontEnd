@@ -1,480 +1,307 @@
 <template>
-  <div>
+  <div class="bg-gray-100">
     <AppBar />
 
-    <!-- Hero bar -->
-    <section class="pt-20">
-      <div
-        class="items-center w-10/12 grid-cols-2 mx-auto overflow-x-hidden lg:grid md:py-14 lg:py-24 xl:py-14 lg:mt-3 xl:mt-5"
-        data-aos="fade-right"
-        data-aos-duration="800"
-      >
-        <div class="pr-2 md:mb-14 py-14 md:py-0">
-          <h1 class="text-3xl text-primary font-bold xl:text-5xl lg:text-5xl">
-            QR Code Generator
-          </h1>
-          <p class="py-4 text-lg text-gray-500 2xl:py-8 md:py-6 2xl:pr-5">
-            Our QR codes are used by major brands for marketing, payments, and
-            other quick-access applications.
-          </p>
-          <div class="mt-4">
-            <a
-              href="#contact"
-              class="px-5 py-3 text-lg tracking-wider text-success hover:text-white bg-primary-shades rounded-lg md:px-8 hover:bg-primary group"
-              ><span>Explore More</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="pb-10 overflow-hidden md:p-10 lg:p-0 sm:pb-0">
-          <img
-            title="https://storyset.com/technology"
-            class="transition-all duration-300 ease-in-out hover:scale-105 lg:w-full sm:mx-auto sm:w-4/6 sm:pb-12 lg:pb-0"
-            src="/icons/qr-code-animate2.svg"
-            alt="Technology illustrations by Storyset"
-            width="500"
-            height="488"
-          />
-        </div>
+    <div class="py-24 md:py-36">
+      <div class="px-3">
+        <h1
+          class="text-center font-bold text-4xl md:text-6xl text-black-shades"
+        >
+          Make every connection count
+        </h1>
+        <p
+          class="text-center text-base sm:text-lg md:text-xl mt-4 md:w-[50%] mx-auto text-gray-500"
+        >
+          Create shortcut links, Qr Codes, Share them on any Platform. Track
+          your Metrics. All inside the
+          <span class="font-bold text-info">Iszify Connections Platform.</span>
+        </p>
       </div>
-    </section>
+      <div class="mt-10 md:w-[70%] px-5 mx-auto">
+        <div class="flex items-center justify-center">
+          <button
+            @click="toggleTab('link')"
+            class="text-base md:text-lg text-accent flex items-center gap-2 px-5 py-3 rounded-t-lg"
+            :class="
+              tab === 'link' ? 'bg-white font-bold text-info' : 'bg-gray-100'
+            "
+          >
+            <ion-icon
+              name="link-outline"
+              size="small"
+              class="rotate-45 hidden md:block"
+            ></ion-icon>
+            Short link
+          </button>
+          <button
+            @click="toggleTab('qr')"
+            class="text-base md:text-lg text-accent flex items-center gap-2 px-5 py-3 rounded-t-lg"
+            :class="
+              tab === 'qr' ? 'bg-white font-bold text-info' : 'bg-gray-100'
+            "
+          >
+            <ion-icon
+              name="qr-code-outline"
+              size="small"
+              class="hidden md:block"
+            ></ion-icon>
+            QR code
+          </button>
+          <button
+            @click="toggleTab('bio')"
+            class="text-base md:text-lg flex text-accent items-center gap-2 px-5 py-3 rounded-t-lg"
+            :class="
+              tab === 'bio' ? 'bg-white font-bold text-info' : 'bg-gray-100'
+            "
+          >
+            <ion-icon
+              name="phone-portrait-outline"
+              size="small"
+              class="hidden md:block"
+            ></ion-icon>
+            Link in bio
+          </button>
+        </div>
 
-    <!-- static qrcode -->
-    <section class="pt-20">
-      <StaticQrcode />
-    </section>
-
-    <section class="relative overflow-hidden bg-gray-50">
-      <div class="mt-2 md:mt-0 pb-6 sm:py-16 overflow-hidden">
-        <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 relative">
-          <div class="relative mt-12 lg:mt-20">
-            <div
-              class="absolute inset-x-0 hidden xl:px-44 top-2 md:block md:px-20 lg:px-28"
-            >
-              <svg
-                class="w-full"
-                xmlns="http://www.w3.org/2000/svg"
-                width="875"
-                height="48"
-                viewBox="0 0 875 48"
-                fill="none"
-              >
-                <path
-                  d="M2 29C20.2154 33.6961 38.9915 35.1324 57.6111 37.5555C80.2065 40.496 102.791 43.3231 125.556 44.5555C163.184 46.5927 201.26 45 238.944 45C312.75 45 385.368 30.7371 458.278 20.6666C495.231 15.5627 532.399 11.6429 569.278 6.11109C589.515 3.07551 609.767 2.09927 630.222 1.99998C655.606 1.87676 681.208 1.11809 706.556 2.44442C739.552 4.17096 772.539 6.75565 805.222 11.5C828 14.8064 850.34 20.2233 873 24"
-                  stroke="#D4D4D8"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                  stroke-dasharray="1 12"
+        <!-- If tab is link -->
+        <div class="bg-white p-5 rounded-2xl shadow">
+          <div v-if="tab === 'link'">
+            <div class="sm:p-5 md:p-10 space-y-5">
+              <div>
+                <p class="font-bold">Paste a long URL</p>
+                <input
+                  type="text"
+                  class="w-full v-input"
+                  placeholder="https://your-long-domain-url"
                 />
-              </svg>
+              </div>
+
+              <div class="flex items-center gap-1 sm:gap-5">
+                <div class="w-full">
+                  <p class="font-bold">Domain</p>
+                  <input
+                    type="text"
+                    class="w-full v-input bg-gray-50"
+                    placeholder="Izz.ly"
+                    disabled
+                  />
+                </div>
+                <div class="h-full mt-5 text-xl">/</div>
+                <div class="w-full">
+                  <p class="font-bold">Enter a back-half</p>
+                  <input
+                    type="text"
+                    class="w-full v-input"
+                    placeholder="Favorite-link"
+                  />
+                </div>
+              </div>
+
+              <p>
+                By clicking Shorten URL, you agree to Iszify's
+                <span>Terms of Use</span> and <span>Privacy Policy</span>
+              </p>
+
+              <div>
+                <button class="btnn">Shorten Url</button>
+              </div>
             </div>
+          </div>
+          <div v-if="tab === 'qr'">
+            <StaticQrcode />
+          </div>
+          <div v-if="tab === 'bio'">
+            <div class="sm:p-5 md:p-10 space-y-5">
+              <div>
+                <p class="font-bold">Input Your Username</p>
+                <div
+                  class="flex items-center mt-3 border-[0.5px] border-accent hover:border-info rounded"
+                >
+                  <div class="flex items-center gap-1 w-full">
+                    <span class="pl-2 font-bold text-black">izz.ly/</span>
+                    <input
+                      type="text"
+                      id="input-9"
+                      class="w-full h-10 text-sm text-gray-700 focus:outline-none"
+                      placeholder="User"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <p>
+                By Creating Link in Bio, you agree to Iszify's
+                <span>Terms of Use</span> and <span>Privacy Policy</span>
+              </p>
+
+              <div>
+                <button class="btnn">CREATE</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- features -->
+    <div class="mx-auto w-[85%] py-1- sm:px-6 lg:px-8">
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-between gap-20"
+      >
+        <div class="flex gap-4 items-start w-full">
+          <span class="text-neutral-600 bg-neutral-500/10 p-3 rounded-full">
+            <ion-icon name="share-social" size="small"></ion-icon
+          ></span>
+          <div>
+            <h3 class="font-black text-black-shades text-xl md:text-2xl">
+              Share Link
+            </h3>
+            <p class="text-base md:text-lg pt-1.5 text-gray-500">
+              Iszify can sreamline your social media channels so your followers
+              can take action.
+            </p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start w-full">
+          <span class="text-neutral-600 bg-neutral-500/10 p-3 rounded-full">
+            <ion-icon name="bar-chart" size="small"></ion-icon
+          ></span>
+          <div>
+            <h3 class="font-black text-black-shades text-xl md:text-2xl">
+              Drive Conversions
+            </h3>
+            <p class="text-base md:text-lg pt-1.5 text-gray-500">
+              Using short links to share intresting pages from around the world.
+            </p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start w-full">
+          <span class="text-neutral-600 bg-neutral-500/10 p-3 rounded-full">
+            <ion-icon name="sparkles"></ion-icon
+          ></span>
+          <div>
+            <h3 class="font-black text-black-shades text-xl md:text-2xl">
+              Track Metrics
+            </h3>
+            <p class="text-base md:text-lg pt-1.5 text-gray-500">
+              Use the link management platform to track your metrics for each
+              custom URL.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Explore -->
+    <div class="mx-auto max-w-6xl sm:px-6 py-12 lg:px-8 md:py-28">
+      <div
+        class="relative isolate overflow-hidden bg-primary/10 px-6 py-6 text-center sm:rounded-3xl sm:px-16"
+      >
+        <h2
+          class="mx-auto max-w-xl text-3xl md:text-4xl lg:text-6xl font-bold tracking-tight text-black"
+        >
+          Explore features <br />
+          for more
+          <span>
+            <ion-icon
+              name="extension-puzzle"
+              color="warning"
+              size="large"
+            ></ion-icon>
+          </span>
+          efficiency
+        </h2>
+        <p class="mx-auto mt-3 max-w-2xl text-xl lg:text-2xl font-medium">
+          Use Iszify to save your hours of work
+        </p>
+        <div class="mt-5 md:mt-10 flex items-center justify-center gap-x-6">
+          <div
+            class="font-medium text-white bg-primary rounded-full py-1 px-2 relative"
+          >
             <div
-              class="relative grid grid-cols-1 text-center gap-y-8 sm:gap-y-10 md:gap-y-12 md:grid-cols-3 gap-x-12"
+              class="flex items-center justify-center gap-2 text-lg transition"
             >
-              <div>
-                <div
-                  class="flex items-center justify-center w-16 h-16 mx-auto bg-white border-2 border-gray-200 rounded-full shadow"
-                >
-                  <span class="text-xl font-semibold text-primary">1</span>
-                </div>
-                <h3
-                  class="mt-4 sm:mt-6 text-xl font-semibold leading-tight text-gray-900 md:mt-10"
-                >
-                  Register
-                </h3>
-                <p
-                  class="mt-3 sm:mt-4 text-base text-gray-600 dark:text-gray-400"
-                >
-                  Register with your email or using sign up with goolgle
-                </p>
-              </div>
-              <div>
-                <div
-                  class="flex items-center justify-center w-16 h-16 mx-auto bg-white border-2 border-gray-200 rounded-full shadow"
-                >
-                  <span class="text-xl font-semibold text-primary">2</span>
-                </div>
-                <h3
-                  class="mt-4 sm:mt-6 text-xl font-semibold leading-tight text-gray-900 md:mt-10"
-                >
-                  Create your image
-                </h3>
-                <p
-                  class="mt-3 sm:mt-4 text-base text-gray-600 dark:text-gray-400"
-                >
-                  Choose AI assistants to create your image variations.
-                </p>
-              </div>
-              <div>
-                <div
-                  class="flex items-center justify-center w-16 h-16 mx-auto bg-white border-2 border-gray-200 rounded-full shadow"
-                >
-                  <span class="text-xl font-semibold text-primary">3</span>
-                </div>
-                <h3
-                  class="mt-4 sm:mt-6 text-xl font-semibold leading-tight text-gray-900 md:mt-10"
-                >
-                  Download
-                </h3>
-                <p
-                  class="mt-3 sm:mt-4 text-base text-gray-600 dark:text-gray-400"
-                >
-                  Download zip of all variations
-                </p>
-              </div>
+              <ion-icon
+                name="link-outline"
+                size="small"
+                class="rotate-45 text-primary bg-white rounded-full p-1.5"
+              ></ion-icon>
+              <span class="text-base md:text-lg font-bold py-0.5"
+                >Short links</span
+              >
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- short URL  -->
-    <section class="pt-20">
-      <div
-        class="items-center w-10/12 grid-cols-2 mx-auto overflow-x-hidden lg:grid md:py-14 lg:py-24 xl:py-14 lg:mt-3 xl:mt-5"
-        data-aos="fade-right"
-        data-aos-duration="800"
-      >
-        <div class="pb-10 overflow-hidden md:p-10 lg:p-0 sm:pb-0">
-          <img
-            title="https://storyset.com/technology"
-            class="transition-all duration-300 ease-in-out hover:scale-105 lg:w-full sm:mx-auto sm:w-4/6 sm:pb-12 lg:pb-0"
-            src="/icons/shorturl-animate.svg"
-            alt="Technology illustrations by Storyset"
-            width="500"
-            height="488"
-          />
-        </div>
-        <div class="pr-2 md:mb-14 py-14 md:py-0">
-          <h1 class="text-3xl text-primary font-bold xl:text-5xl lg:text-5xl">
-            Short URL
-          </h1>
-          <p class="py-4 text-lg text-gray-500 2xl:py-8 md:py-6 2xl:pr-5">
-            Iszify lets you easily reduce long URLs from platforms like
-            Instagram, Facebook, YouTube, Twitter, LinkedIn, and other
-            authoritative websites. Use your shortened URLs in publications,
-            ads, affiliate marketing, blogs, forums, and more. Track stats for
-            your projects with our click counter!
-          </p>
-          <div class="mt-4">
-            <a
-              href="#contact"
-              class="px-5 py-3 text-lg tracking-wider text-success hover:text-white bg-primary-shades rounded-lg md:px-8 hover:bg-primary group"
-              ><span>Get Started</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!--  -->
-    <section class="pt-20">
-      <div
-        class="items-center w-10/12 grid-cols-2 mx-auto overflow-x-hidden lg:grid md:py-14 lg:py-24 xl:py-14 lg:mt-3 xl:mt-5"
-        data-aos="fade-right"
-        data-aos-duration="800"
-      >
-        <div class="pr-2 md:mb-14 py-14 md:py-0">
-          <h1 class="text-3xl text-primary font-bold xl:text-5xl lg:text-5xl">
-            Link In Bio
-          </h1>
-          <p class="py-4 text-lg text-gray-500 2xl:py-8 md:py-6 2xl:pr-5">
-            Create and customize your QR Codes, shorten URLs, and build bio
-            links effortlessly. Streamline sharing with personalized,
-            eye-catching designs—all in one place!
-          </p>
-          <div class="mt-4">
-            <a
-              href="#contact"
-              class="px-5 py-3 text-lg tracking-wider text-success hover:text-white bg-primary-shades rounded-lg md:px-8 hover:bg-primary group"
-              ><span>Explore More</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="pb-10 overflow-hidden md:p-10 lg:p-0 sm:pb-0">
-          <img
-            title="https://storyset.com/technology"
-            class="transition-all duration-300 ease-in-out hover:scale-105 lg:w-full sm:mx-auto sm:w-4/6 sm:pb-12 lg:pb-0"
-            src="/icons/bio-animate.svg"
-            alt="Technology illustrations by Storyset"
-            width="500"
-            height="488"
-          />
-        </div>
-      </div>
-    </section>
-
-    <!--  -->
-    <section
-      class="relative z-10 overflow-hidden bg-primary py-28 px-8 md:px-12 mt-40"
-    >
-      <div class="container">
-        <div class="-mx-4 flex flex-wrap items-center">
-          <div class="w-full px-4 lg:w-1/2">
-            <div class="text-center lg:text-left">
-              <div class="mb-10 lg:mb-0">
-                <h1
-                  class="mt-0 mb-3 text-3xl font-bold leading-tight sm:text-4xl sm:leading-tight md:text-[40px] md:leading-tight text-white"
-                >
-                  Start building automated serverless forms
-                </h1>
-                <p
-                  class="w-full text-base font-medium leading-relaxed sm:text-lg sm:leading-relaxed text-white"
-                ></p>
-              </div>
+          <div
+            class="font-medium text-primary border border-primary rounded-full py-1 px-2 relative"
+          >
+            <div
+              class="flex items-center justify-center gap-2 text-lg transition"
+            >
+              <ion-icon
+                name="qr-code-outline"
+                size="small"
+                class="text-white bg-primary rounded-full p-1.5"
+              ></ion-icon>
+              <span class="text-base md:text-lg font-bold py-0.5"
+                >Generate QR codes</span
+              >
             </div>
           </div>
-          <div class="w-full px-4 lg:w-1/2">
-            <div class="text-center lg:text-right">
-              <a
-                class="font-semibold rounded-lg mx-auto inline-flex items-center justify-center bg-white py-4 px-9 hover:bg-opacity-90"
-                href="#"
-                >Create Your First Form</a
+          <div
+            class="font-medium text-primary border border-primary rounded-full py-1 px-2 relative"
+          >
+            <div
+              class="flex items-center justify-center gap-2 text-lg transition"
+            >
+              <ion-icon
+                name="bar-chart"
+                size="small"
+                class="text-white bg-primary rounded-full p-1.5"
+              ></ion-icon>
+              <span class="text-base md:text-lg font-bold py-0.5"
+                >Manage your links</span
               >
             </div>
           </div>
         </div>
-      </div>
-      <span class="absolute top-0 right-0 -z-10">
-        <svg
-          width="388"
-          height="250"
-          viewBox="0 0 388 220"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            opacity="0.05"
-            d="M203 -28.5L4.87819e-05 250.5L881.5 250.5L881.5 -28.5002L203 -28.5Z"
-            fill="url(#paint0_linear_971_6910)"
-          ></path>
-          <defs>
-            <linearGradient
-              id="paint0_linear_971_6910"
-              x1="60.5"
-              y1="111"
-              x2="287"
-              y2="111"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop offset="0.520507" stop-color="white"></stop>
-              <stop offset="1" stop-color="white" stop-opacity="0"></stop>
-            </linearGradient>
-          </defs></svg></span
-      ><span class="absolute top-0 right-0 -z-10"
-        ><svg
-          width="324"
-          height="250"
-          viewBox="0 0 324 220"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            opacity="0.05"
-            d="M203 -28.5L4.87819e-05 250.5L881.5 250.5L881.5 -28.5002L203 -28.5Z"
-            fill="url(#paint0_linear_971_6911)"
-          ></path>
-          <defs>
-            <linearGradient
-              id="paint0_linear_971_6911"
-              x1="60.5"
-              y1="111"
-              x2="287"
-              y2="111"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop offset="0.520507" stop-color="white"></stop>
-              <stop offset="1" stop-color="white" stop-opacity="0"></stop>
-            </linearGradient>
-          </defs></svg></span
-      ><span class="absolute top-4 left-4 -z-10"
-        ><svg
-          width="43"
-          height="56"
-          viewBox="0 0 43 56"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g opacity="0.5">
-            <circle
-              cx="40.9984"
-              cy="1.49626"
-              r="1.49626"
-              transform="rotate(90 40.9984 1.49626)"
-              fill="white"
-            ></circle>
-            <circle
-              cx="27.8304"
-              cy="1.49626"
-              r="1.49626"
-              transform="rotate(90 27.8304 1.49626)"
-              fill="white"
-            ></circle>
-            <circle
-              cx="14.6644"
-              cy="1.49626"
-              r="1.49626"
-              transform="rotate(90 14.6644 1.49626)"
-              fill="white"
-            ></circle>
-            <circle
-              cx="1.49642"
-              cy="1.49626"
-              r="1.49626"
-              transform="rotate(90 1.49642 1.49626)"
-              fill="white"
-            ></circle>
-            <circle
-              cx="40.9984"
-              cy="14.6642"
-              r="1.49626"
-              transform="rotate(90 40.9984 14.6642)"
-              fill="white"
-            ></circle>
-            <circle
-              cx="27.8304"
-              cy="14.6642"
-              r="1.49626"
-              transform="rotate(90 27.8304 14.6642)"
-              fill="white"
-            ></circle>
-            <circle
-              cx="14.6644"
-              cy="14.6642"
-              r="1.49626"
-              transform="rotate(90 14.6644 14.6642)"
-              fill="white"
-            ></circle>
-            <circle
-              cx="1.49642"
-              cy="14.6642"
-              r="1.49626"
-              transform="rotate(90 1.49642 14.6642)"
-              fill="white"
-            ></circle>
-            <circle
-              cx="40.9984"
-              cy="27.8302"
-              r="1.49626"
-              transform="rotate(90 40.9984 27.8302)"
-              fill="white"
-            ></circle>
-            <circle
-              cx="27.8304"
-              cy="27.8302"
-              r="1.49626"
-              transform="rotate(90 27.8304 27.8302)"
-              fill="white"
-            ></circle>
-            <circle
-              cx="14.6644"
-              cy="27.8302"
-              r="1.49626"
-              transform="rotate(90 14.6644 27.8302)"
-              fill="white"
-            ></circle>
-            <circle
-              cx="1.49642"
-              cy="27.8302"
-              r="1.49626"
-              transform="rotate(90 1.49642 27.8302)"
-              fill="white"
-            ></circle>
-            <circle
-              cx="40.9984"
-              cy="40.9982"
-              r="1.49626"
-              transform="rotate(90 40.9984 40.9982)"
-              fill="white"
-            ></circle>
-            <circle
-              cx="27.8304"
-              cy="40.9963"
-              r="1.49626"
-              transform="rotate(90 27.8304 40.9963)"
-              fill="white"
-            ></circle>
-            <circle
-              cx="14.6644"
-              cy="40.9982"
-              r="1.49626"
-              transform="rotate(90 14.6644 40.9982)"
-              fill="white"
-            ></circle>
-            <circle
-              cx="1.49642"
-              cy="40.9963"
-              r="1.49626"
-              transform="rotate(90 1.49642 40.9963)"
-              fill="white"
-            ></circle>
-            <circle
-              cx="40.9984"
-              cy="54.1642"
-              r="1.49626"
-              transform="rotate(90 40.9984 54.1642)"
-              fill="white"
-            ></circle>
-            <circle
-              cx="27.8304"
-              cy="54.1642"
-              r="1.49626"
-              transform="rotate(90 27.8304 54.1642)"
-              fill="white"
-            ></circle>
-            <circle
-              cx="14.6644"
-              cy="54.1642"
-              r="1.49626"
-              transform="rotate(90 14.6644 54.1642)"
-              fill="white"
-            ></circle>
-            <circle
-              cx="1.49642"
-              cy="54.1642"
-              r="1.49626"
-              transform="rotate(90 1.49642 54.1642)"
-              fill="white"
-            ></circle>
-          </g>
-        </svg>
-      </span>
-    </section>
 
-    <!-- Testimonial -->
-    <TestimonialSection />
-
-    <!--  -->
-    <section>
-      <h2
-        class="text-accent text-3xl md:text-5xl mt-5 text-center pt-5 md:pt-20 font-bold"
-      >
-        Frequently Asked Questions
-      </h2>
-      <div class="container mx-auto p-5 w-full gap-10 md:gap-20 py-10 md:py-20">
-        <div class="space-y-4 mt-5 md:mt-0 w-full">
-          <div v-for="(item, index) in items" :key="index" class="border-t">
-            <button
-              @click="toggle(index)"
-              class="flex justify-between w-full p-4 text-left text-lg font-medium text-gray-700 rounded-lg focus:outline-none"
-            >
-              <span class="font-medium">{{ item.title }}</span>
-              <span v-if="activeIndex === index">-</span>
-              <span v-else>+</span>
-            </button>
-            <div>
-              <div
-                v-show="activeIndex === index"
-                class="p-4 text-gray-600 bg-gray-50 rounded-lg transition ease-in-out"
-              >
-                {{ item.content }}
-              </div>
-            </div>
+        <div>
+          <div>
+            <h2 class="text-4xl font-bold">Campaign Monitoring & Analytics</h2>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+
+    <!-- CTAAA -->
+    <div class="mx-auto max-w-6xl sm:px-6 py-12 lg:px-8 md:py-28">
+      <div
+        class="relative isolate overflow-hidden bg-green-700 px-6 py-16 text-center shadow-2xl sm:rounded-3xl sm:px-16"
+      >
+        <h2
+          class="mx-auto max-w-2xl text-3xl md:text-4xl lg:text-6xl font-bold tracking-tight text-white"
+        >
+          Get closer
+          <span
+            ><ion-icon name="happy" color="warning" size="large"></ion-icon>
+          </span>
+          to your audience and customer today
+        </h2>
+        <p
+          class="mx-auto mt-6 max-w-2xl text-lg lg:text-xl leading-8 text-white"
+        >
+          Connect to your audience with branded links, Qr Code and a Link-in-bio
+          that will get their attention and help you grow your business.
+        </p>
+        <div class="mt-10 flex items-center justify-center gap-x-6">
+          <a
+            href="#"
+            class="rounded-md bg-white px-3.5 py-2.5 font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >Start for free
+          </a>
+        </div>
+      </div>
+    </div>
 
     <!-- Footer -->
     <FooterSection />
@@ -483,20 +310,21 @@
 
 <script>
 import FooterSection from "@/components/FooterSection.vue";
-import TestimonialSection from "@/components/TestimonialSection.vue";
+// import TestimonialSection from "@/components/TestimonialSection.vue";
 import StaticQrcode from "@/components/qrcodes/StaticQrcode.vue";
 import AppBar from "@/components/AppBar.vue";
 
 export default {
   components: {
     FooterSection,
-    TestimonialSection,
+    // TestimonialSection,
     StaticQrcode,
     AppBar,
   },
 
   data() {
     return {
+      tab: "link",
       activeIndex: null,
       items: [
         {
@@ -558,6 +386,10 @@ export default {
     };
   },
   methods: {
+    toggleTab(tab) {
+      this.tab = tab;
+    },
+
     toggle(index) {
       this.activeIndex = this.activeIndex === index ? null : index;
     },

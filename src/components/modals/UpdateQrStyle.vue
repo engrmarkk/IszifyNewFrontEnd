@@ -365,7 +365,7 @@ const closeModal = () => {
 const updateQrCode = () => {
   isLoading.value = true;
   if (!props.qrCodeData.category) {
-    console.error("Category is required but missing in qrCodeData.");
+    console.log("Category is required but missing in qrCodeData.");
     return;
   }
   // Here you can add any logic to handle QR code updates if necessary
@@ -406,7 +406,7 @@ onMounted(() => {
       }
     });
   } else {
-    console.error("QR code data is undefined or missing");
+    console.log("QR code data is undefined or missing");
   }
 });
 </script>

@@ -359,7 +359,7 @@ const generateQRCodes = () => {
       canvasContainer.innerHTML = ""; // Clear any previous QR codes
       qrCodeInstance.append(canvasContainer);
     } else {
-      console.error(`Canvas container for code ID ${code.id} not found`);
+      console.log(`Canvas container for code ID ${code.id} not found`);
     }
   });
 };
@@ -457,7 +457,7 @@ const handleCustomiseQrcode = (code: any) => {
     selectedQrCode.value = code;
     qrModal.value = true;
   } else {
-    console.error("QR code data is missing or incomplete", code);
+    console.log("QR code data is missing or incomplete", code);
   }
 };
 

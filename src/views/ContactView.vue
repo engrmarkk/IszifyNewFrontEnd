@@ -2,9 +2,7 @@
   <div class="bg-white">
     <AppBar />
 
-    <section
-      class="text-center container mx-auto pt-10 md:pt-20 xl:pt-40 py-20 px-5"
-    >
+    <section class="text-center container mx-auto pt-20 xl:pt-40 py-20 px-5">
       <h2 class="text-5xl font-semibold">Get In Touch</h2>
       <p class="mt-4 text-gray-700 max-w-2xl mx-auto">
         We are here to help you. Reach out to us via any of the following

@@ -1,11 +1,14 @@
 <template>
   <section class="min-h-screen bg-white flex">
-    <section class="w-full md:w-[60%] px-10 sm:px-20 py-5 md:p-10">
+    <Appbar class="md:hidden" />
+    <section class="w-full md:w-[60%] px-10 sm:px-20 pt-20 md:pt-5 md:p-10">
       <div class="flex flex-col justify-between h-full w-full mx-auto">
-        <div class="flex gap-2 w-full items-center">
-          <img src="/icons/logo.svg" alt="" />
-          <h1 class="text-xl font-extrabold text-black">ISZIFY</h1>
-        </div>
+        <router-link to="/"
+          ><div class="md:flex gap-2 w-full items-center hidden">
+            <img src="/icons/logo.svg" alt="" />
+            <h1 class="text-xl font-extrabold text-black">ISZIFY</h1>
+          </div></router-link
+        >
 
         <div class="w-full self-center h-full">
           <div class="mx-auto mt-10 md:mt-20 md:w-[400px]">
@@ -110,6 +113,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
+import Appbar from "@/components/AppBar.vue";
 import LoadingSpinner from "@/components/actions/LoadingSpinner.vue";
 import ButtonLoader from "@/components/actions/ButtonLoader.vue";
 import { signin } from "@/services/auth.service";

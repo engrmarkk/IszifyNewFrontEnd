@@ -105,6 +105,7 @@
             </li>
           </ul>
         </nav>
+
         <div class="flex gap-2 items-center">
           <div class="hidden md:block">
             <router-link to="/login">
@@ -120,10 +121,119 @@
             <img src="/icons/menu.svg" alt="" />
           </div>
           <div v-else @click="closeNav" class="md:hidden">
-            <img src="/icons/close.svg" alt="" />
+            <img src="/icons/close-black.svg" alt="" />
           </div>
         </div>
       </div>
+
+      <nav v-if="modal" class="md:hidden items-center md:gap-20 pl-5 pb-8">
+        <ul class="flex-col space-y-4 font-light uppercase items-center">
+          <li>
+            <details class="group">
+              <summary
+                class="flex items-center gap-10 font-medium marker:content-none hover:cursor-pointer"
+              >
+                <span
+                  class="flex gap-2 text-sm font-bold cursor-pointer hover:text-accent"
+                >
+                  <span
+                    :class="
+                      active === 'products'
+                        ? 'text-accent underline underline-offset-4 decoration-4 decoration-primary'
+                        : 'text-primary '
+                    "
+                  >
+                    Products
+                  </span>
+                </span>
+
+                <ion-icon
+                  name="chevron-down-outline"
+                  size="small"
+                  class="transition group-open:rotate-180"
+                  :color="active === 'products' ? 'accent' : 'success'"
+                ></ion-icon>
+              </summary>
+
+              <article class="py-4">
+                <div class="flex flex-col gap-3">
+                  <div
+                    class="text-sm px-5 font-bold cursor-pointer hover:text-primary"
+                    :class="
+                      active === 'pricing'
+                        ? 'text-primary underline underline-offset-4 decoration-4 decoration-primary'
+                        : 'text-accent '
+                    "
+                  >
+                    Qr Codes
+                  </div>
+                  <div
+                    class="text-sm px-5 font-bold cursor-pointer hover:text-primary"
+                    :class="
+                      active === 'pricing'
+                        ? 'text-primary underline underline-offset-4 decoration-4 decoration-primary'
+                        : 'text-accent '
+                    "
+                  >
+                    Url Shortner
+                  </div>
+                  <div
+                    class="text-sm px-5 font-bold cursor-pointer hover:text-primary"
+                    :class="
+                      active === 'pricing'
+                        ? 'text-primary underline underline-offset-4 decoration-4 decoration-primary'
+                        : 'text-accent '
+                    "
+                  >
+                    Link in Bio
+                  </div>
+                </div>
+              </article>
+            </details>
+          </li>
+
+          <li
+            @click="activeLink('plans-and-pricing')"
+            class="text-sm font-bold cursor-pointer hover:text-accent"
+            :class="
+              active === 'pricing'
+                ? 'text-accent underline underline-offset-4 decoration-4 decoration-primary'
+                : 'text-primary '
+            "
+          >
+            Pricing
+          </li>
+          <li
+            @click="activeLink('faq')"
+            class="text-sm font-bold cursor-pointer hover:text-accent"
+            :class="
+              active === 'faq'
+                ? 'text-accent underline underline-offset-4 decoration-4 decoration-primary'
+                : 'text-primary '
+            "
+          >
+            FAQ
+          </li>
+          <li
+            @click="activeLink('support')"
+            class="text-sm font-bold cursor-pointer hover:text-accent"
+            :class="
+              active === 'support'
+                ? 'text-accent underline underline-offset-4 decoration-4 decoration-primary'
+                : 'text-primary '
+            "
+          >
+            Support
+          </li>
+        </ul>
+        <div class="md:hidden mt-5">
+          <router-link to="/login">
+            <button class="btnn-sm-outline border-success text-success">
+              Login
+            </button></router-link
+          >
+        </div>
+      </nav>
     </header>
   </section>
 </template>

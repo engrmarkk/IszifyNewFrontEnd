@@ -455,7 +455,7 @@
       </div>
     </div>
 
-    <FooterSection2 />
+    <FooterSection />
   </section>
 </template>
 
@@ -463,7 +463,7 @@
 import { ref } from "vue";
 import { useHead } from "@vueuse/head";
 import AppBar from "@/components/AppBar.vue";
-import FooterSection2 from "@/components/FooterSection2.vue";
+import FooterSection from "@/components/FooterSection.vue";
 
 // Dynamically set title and meta tags for this component
 useHead({

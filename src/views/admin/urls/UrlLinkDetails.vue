@@ -436,14 +436,14 @@ const getFaviconUrl = (url) => {
     const parsedUrl = new URL(url); // Parse the URL
     return `${parsedUrl.origin}/favicon.ico`; // Generate favicon URL
   } catch (error) {
-    console.error("Invalid URL", error);
+    console.log("Invalid URL", error);
     return "/icons/website.svg"; // Fallback favicon
   }
 };
 
 const handleFaviconError = (event, link) => {
   event.target.src = "/icons/website.svg"; // Replace broken favicon with default
-  console.warn(`Favicon not found for: ${link.url}`);
+  console.log(`Favicon not found for: ${link.url}`);
 };
 
 // Function to copy link to clipboard
@@ -502,7 +502,7 @@ onMounted(async () => {
       if (canvasContainer) {
         qrCode.value.append(canvasContainer);
       } else {
-        console.error(`Canvas container for code ID ${code.id} not found`);
+        console.log(`Canvas container for code ID ${code.id} not found`);
       }
     }
   });

@@ -1,7 +1,7 @@
 <template>
-  <h2 class="text-lg font-bold">Url Form for QRcode</h2>
+  <!-- <h2 class="text-lg font-bold">Url Form for QRcode</h2> -->
   <form @submit.prevent class="mt-5">
-    <p class="text-xs font-bold">Enter Website URL</p>
+    <p class="text-sm md:text-base font-bold">Enter Website URL</p>
     <input
       v-model="url"
       type="text"

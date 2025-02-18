@@ -189,12 +189,12 @@ export default defineComponent({
       const elts = document.getElementsByClassName("pin");
       Array.from(elts).forEach((elt: any, index) => {
         elt.addEventListener("keyup", (event: any) => {
-          console.log(event.keyCode);
+          // console.log(event.keyCode);
           if (event.keyCode === 6 && index > 0) {
             elt.previousElementSibling.focus();
           }
           if (elt.value.length == 1 && index < 5 && event.keyCode !== 8) {
-            console.log(elt.nextElementSibling);
+            // console.log(elt.nextElementSibling);
             elt.nextElementSibling.focus();
           }
           if (event.keyCode === 8 && index > 0) {
