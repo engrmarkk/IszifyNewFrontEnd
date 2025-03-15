@@ -78,9 +78,6 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
-import PopOne from "@/views/admin/bio/Themes/PopOne";
-import PopTwo from "@/views/admin/bio/Themes/PopTwo";
-import BasicTheme from "@/views/admin/bio/Themes/BasicTheme";
 
 definePageMeta({
   layout: "user",
