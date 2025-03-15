@@ -159,7 +159,12 @@ const login = async () => {
     toast.success("Login successful");
     const lastVisitedRoute =
       localStorage.getItem("lastVisitedRoute") || "/user";
-    router.replace(lastVisitedRoute);
+    if (lastVisitedRoute === "/") {
+      router.replace("/user");
+    } else {
+      router.replace(lastVisitedRoute);
+    }
+    router.push("/user");
     isLoading.value = false;
   } else {
     if (response?.error) {

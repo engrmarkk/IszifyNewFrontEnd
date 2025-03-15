@@ -66,9 +66,9 @@
           <p class="w-5 h-5"><img src="/icons/dots.svg" alt="" /></p>
         </h2>
         <div class="mt-5 md:mt-10 2xl:mt-20">
-          <BasicTheme v-if="theme === 'BasicTheme'" :items="items" />
+          <!-- <BasicTheme v-if="theme === 'BasicTheme'" :items="items" />
           <PopOne v-if="theme === 'PopOne'" :items="items" />
-          <PopTwo v-if="theme === 'PopTwo'" :items="items" />
+          <PopTwo v-if="theme === 'PopTwo'" :items="items" /> -->
         </div>
       </div>
     </div>
