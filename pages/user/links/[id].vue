@@ -357,7 +357,6 @@ import { useToast } from "vue-toastification";
 import HeaderComponent from "@/components/HeaderComponent.vue";
 import LoadingSpinner from "@/components/actions/LoadingSpinner.vue";
 import QRCodeStyling from "qr-code-styling";
-import { getSingleUrlLink, EditUrlLink } from "@/composable/link";
 import ShareModal from "@/components/modals/ShareModal.vue";
 
 const { $axiosHelper } = useNuxtApp();

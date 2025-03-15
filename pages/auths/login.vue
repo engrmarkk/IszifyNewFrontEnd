@@ -157,14 +157,12 @@ const login = async () => {
     }),
       store.setAdminProfile({ access_token: response?.data?.access_token });
     toast.success("Login successful");
-    const lastVisitedRoute =
-      localStorage.getItem("lastVisitedRoute") || "/user";
+    const lastVisitedRoute = localStorage.getItem("lastVisitedRoute");
     if (lastVisitedRoute === "/") {
       router.replace("/user");
     } else {
       router.replace(lastVisitedRoute);
     }
-    router.push("/user");
     isLoading.value = false;
   } else {
     if (response?.error) {

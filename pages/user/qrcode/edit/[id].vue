@@ -133,7 +133,6 @@ import { ref, nextTick, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useToast } from "vue-toastification";
 import HeaderComponent from "@/components/HeaderComponent.vue";
-import { getUpdateQrCode, updateQrCode } from "@/services/qrcode.service";
 import QRCodeStyling from "qr-code-styling";
 import PageAnimation from "@/components/actions/PageAnimation.vue";
 
