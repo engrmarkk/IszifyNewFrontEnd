@@ -1,0 +1,31 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "NUXT_LOADING_ENABLE_ANIMATION=false nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxtjs/tailwindcss": "^6.13.1",
+    "@pinia/nuxt": "^0.10.1",
+    "autoprefixer": "^10.4.20",
+    "axios": "^1.8.1",
+    "nuxt": "^3.15.4",
+    "pinia": "^3.0.1",
+    "postcss-preset-env": "^10.1.5",
+    "qr-code-styling": "github:olamideolajide01/qr-code-styling",
+    "qrcode": "^1.5.4",
+    "vue": "latest",
+    "vue-awesome-paginate": "^1.2.0",
+    "vue-router": "latest",
+    "vue-toastification": "^2.0.0-rc.5",
+    "vue3-popper": "^1.5.0"
+  },
+  "devDependencies": {
+    "daisyui": "^5.0.0"
+  }
+}
