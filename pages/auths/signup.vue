@@ -138,7 +138,7 @@ import { ref } from "vue";
 import LoadingSpinner from "@/components/actions/LoadingSpinner.vue";
 import ButtonLoader from "@/components/actions/ButtonLoader.vue";
 import { useAuthStore } from "@/store/auth";
-import { useToast } from "vue-toastification";
+const { $toast } = useNuxtApp();
 import { useRouter } from "vue-router";
 import { session } from "@/utils";
 
@@ -146,7 +146,6 @@ definePageMeta({
   layout: false,
 });
 
-const toast = useToast();
 const store = useAuthStore();
 const router = useRouter();
 const inputLogin = ref("password");
@@ -178,12 +177,12 @@ const handleRegister = async () => {
     session.set("sessionData", {
       email: response?.data?.user_email,
     }),
-      toast.success(response?.data?.message);
+      $toast.success(response?.data?.message);
     router.push("/auths/otp-verify");
 
     store.isLoading = false;
   } else {
-    toast.error(response?.error?.message || "Network Error");
+    $toast.error(response?.error?.message || "Network Error");
     store.isLoading = false;
   }
 };

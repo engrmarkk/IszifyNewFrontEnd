@@ -1,14 +1,10 @@
+import { defineNuxtConfig } from "nuxt/config";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
-  target: "static", // Important for static site generation
-
   modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt"],
   css: ["~/assets/css/tailwind.css"],
-  nitro: {
-    preset: "static", // Tells Nuxt to generate a static output
-  },
   postcss: {
     plugins: {
       "postcss-import": {},
@@ -19,6 +15,9 @@ export default defineNuxtConfig({
   },
   router: {
     middleware: ["auth.route"],
+  },
+  routeRules: {
+    "/dynamic/*": { prerender: true },
   },
   vue: {
     compilerOptions: {
@@ -33,12 +32,9 @@ export default defineNuxtConfig({
     },
   },
   app: {
-    baseURL: "/", // Make sure this is correct
-
     layoutTransition: false, // Disable layout transition loader
     pageTransition: false, // Disable page transition loader
     head: {
-      link: [],
       title: "Iszify | Create QR Codes, Short URL & Bio Link Pages",
       meta: [
         {

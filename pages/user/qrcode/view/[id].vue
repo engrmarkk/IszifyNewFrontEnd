@@ -165,7 +165,7 @@ import { useRoute, useRouter } from "vue-router";
 import HeaderComponent from "@/components/HeaderComponent.vue";
 import QRCodeStyling from "qr-code-styling";
 import PulseAnimation from "@/components/actions/PulseAnimation.vue";
-import { useToast } from "vue-toastification";
+const { $toast } = useNuxtApp();
 import UpdateQrStyle from "@/components/modals/UpdateQrStyle.vue";
 const { $axiosHelper } = useNuxtApp();
 const { $auth } = useNuxtApp();
@@ -178,7 +178,6 @@ definePageMeta({
 
 const loading = ref(false);
 const route = useRoute();
-const toast = useToast();
 const router = useRouter();
 const isLoading = ref(false);
 const modal = ref(false);
@@ -235,12 +234,12 @@ const handleQrStylingSave = async (updatedStyles: any) => {
   );
   if (!result.error) {
     isLoading.value = false;
-    toast.success(result.data.message);
+    $toast.success(result.data.message);
     closeQrModal();
     await getSingleQrcode(); // Re-fetch the updated data
     await regenerateQrCode(); // Call function to regenerate the QR code
   } else {
-    toast.error(result.error.message);
+    $toast.error(result.error.message);
     isLoading.value = false;
   }
 };

@@ -1,14 +1,11 @@
 import { defineNuxtPlugin } from "#app";
-import Toast, { type PluginOptions, POSITION } from "vue-toastification";
-import "vue-toastification/dist/index.css";
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
 
-export default defineNuxtPlugin((nuxtApp) => {
-  const options: PluginOptions = {
-    position: POSITION.TOP_RIGHT,
-    timeout: 3000,
-    closeOnClick: true,
-    pauseOnHover: true,
+export default defineNuxtPlugin(() => {
+  return {
+    provide: {
+      toast,
+    },
   };
-
-  nuxtApp.vueApp.use(Toast, options);
 });

@@ -325,7 +325,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import { useToast } from "vue-toastification";
+const { $toast } = useNuxtApp();
 import HeaderComponent from "@/components/HeaderComponent.vue";
 import LoadingSpinner from "@/components/actions/LoadingSpinner.vue";
 import ShareModal from "@/components/modals/ShareModal.vue";
@@ -351,7 +351,6 @@ const onLoading = ref(false);
 const toEditShortLink = ref(false);
 const shareLinkModal = ref(false);
 const modal = ref(false);
-const toast = useToast();
 const router = useRouter();
 const HeadTitle = ref("Share your Iszzly Link");
 const links = ref([]);
@@ -393,12 +392,12 @@ const handleEditLink = async (item: any) => {
   );
   if (!response?.error) {
     onLoading.value = false;
-    toast.success(response.error.message);
+    $toast.success(response.error.message);
     closeEditModal();
     getLinks();
   } else {
     if (response?.error) {
-      toast.error("network error");
+      $toast.error("network error");
       onLoading.value = false;
     }
   }
@@ -439,10 +438,10 @@ const handleCopyLink = (link) => {
   navigator.clipboard
     .writeText(link.short_url)
     .then(() => {
-      toast.success("Short link copied to clipboard!");
+      $toast.success("Short link copied to clipboard!");
     })
     .catch((err) => {
-      toast.error("Failed to copy: ", err);
+      $toast.error("Failed to copy: ", err);
     });
 };
 const handleShareLink = (item: any) => {

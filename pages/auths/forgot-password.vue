@@ -74,7 +74,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { useToast } from "vue-toastification";
+const { $toast } = useNuxtApp();
 import { useRouter } from "vue-router";
 import ButtonLoader from "@/components/actions/ButtonLoader.vue";
 
@@ -82,7 +82,6 @@ definePageMeta({
   layout: false,
 });
 
-const toast = useToast();
 const inputLogin = ref("password");
 const switchLoginImage = ref("eye-close.svg");
 const email = ref("");
@@ -100,10 +99,10 @@ const handleForgotPassword = async () => {
   });
 
   if (response && response.status === 200) {
-    toast.success(response?.data?.message);
+    $toast.success(response?.data?.message);
     isLoadingForgot.value = false;
   } else {
-    toast.error(response?.error?.message || "Network Error, try again.");
+    $toast.error(response?.error?.message || "Network Error, try again.");
     isLoadingForgot.value = false;
   }
 };

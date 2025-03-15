@@ -302,7 +302,7 @@ import Popper from "vue3-popper";
 import { session } from "@/utils";
 import DeleteModal from "@/components/modals/DeleteModal.vue";
 import UpdateQrStyle from "@/components/modals/UpdateQrStyle.vue";
-import { useToast } from "vue-toastification";
+const { $toast } = useNuxtApp();
 import moment from "moment";
 import FrameOne from "@/components/frames/qrcodes/FrameOne";
 import FrameTwo from "@/components/frames/qrcodes/FrameTwo";
@@ -337,7 +337,6 @@ const router = useRouter();
 const qrCode = ref<QRCodeStyling | null>(null);
 const generatedCodes = ref([]);
 const filteredStatus = ref("active");
-const toast = useToast();
 const selectedQrCode = ref(null);
 const statuss = ref(["active", "hidden", "customized"]);
 
@@ -388,7 +387,7 @@ const getAllQrCode = async () => {
     loading.value = false;
   } else {
     if (result.error) {
-      toast.error(result?.error?.message);
+      $toast.error(result?.error?.message);
       loading.value = false;
     }
     loading.value = false;
@@ -437,12 +436,12 @@ const handlehiddenQrcode = async (code: any, type: boolean) => {
     sessiondata
   );
   if (!result.error) {
-    toast.success(result.data.message);
+    $toast.success(result.data.message);
     getAllQrCode();
     isLoading.value = false;
   } else {
     if (result?.error) {
-      toast.error(result?.error?.message);
+      $toast.error(result?.error?.message);
       isLoading.value = false;
     }
   }
@@ -471,11 +470,11 @@ const handleQrStylingSave = async (updatedStyles: any) => {
   );
   if (!result.error) {
     onLoading.value = false;
-    toast.success(result.data.message);
+    $toast.success(result.data.message);
     qrModal.value = false;
     await getAllQrCode(); // Re-fetch QR codes after saving
   } else {
-    toast.error(result.error.message);
+    $toast.error(result.error.message);
     onLoading.value = false;
   }
 };
@@ -500,7 +499,7 @@ const handleDownload = (id: any) => {
       extension: "png",
     });
   } else {
-    toast.error("QR code not found.");
+    $toast.error("QR code not found.");
   }
 };
 

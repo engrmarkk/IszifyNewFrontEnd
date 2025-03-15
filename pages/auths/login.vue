@@ -110,7 +110,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import { useToast } from "vue-toastification";
+const { $toast } = useNuxtApp();
 import { useAuthStore } from "@/store/auth";
 import ButtonLoader from "@/components/actions/ButtonLoader.vue";
 
@@ -121,7 +121,6 @@ definePageMeta({
 
 // Setup
 const router = useRouter();
-const toast = useToast();
 const store = useAuthStore();
 const { $auth } = useNuxtApp();
 
@@ -156,20 +155,16 @@ const login = async () => {
       access_token: response?.data?.access_token,
     }),
       store.setAdminProfile({ access_token: response?.data?.access_token });
-    toast.success("Login successful");
-    const lastVisitedRoute = localStorage.getItem("lastVisitedRoute");
-    if (lastVisitedRoute === "/") {
-      router.replace("/user");
-    } else {
-      router.replace(lastVisitedRoute);
-    }
+    $toast.success("Login successful");
+    const lastVisitedRoute = localStorage.getItem("lastVisitedRoute") || "/";
+    router.replace(lastVisitedRoute);
     isLoading.value = false;
   } else {
     if (response?.error) {
       if (response?.error?.email_verified === false) {
         handleLoginError(response?.error);
       } else {
-        toast.error(response?.error?.message || "Network Error");
+        $toast.error(response?.error?.message || "Network Error");
         isLoading.value = false;
       }
     }
@@ -181,7 +176,7 @@ const handleLoginError = (error: any) => {
   if (error?.email_verified === false) {
     router.push("/auths/otp-verify");
   } else {
-    toast.error(error?.message || "Login failed");
+    $toast.error(error?.message || "Login failed");
   }
 };
 </script>

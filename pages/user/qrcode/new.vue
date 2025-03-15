@@ -89,7 +89,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from "#imports";
 import QRCode from "qrcode";
-import { useToast } from "vue-toastification";
+const { $toast } = useNuxtApp();
 import HeaderComponent from "@/components/HeaderComponent.vue";
 import QrStyle from "@/components/modals/QrStyle.vue";
 import UrlForm from "@/components/inputs/UrlForm.vue";
@@ -123,7 +123,6 @@ const categories = ref([
 ]);
 
 // State
-const toast = useToast();
 const categoryType = ref("Url");
 const activeCat = ref("Url");
 const qrCodeDataUrl = ref<string | null>(null);

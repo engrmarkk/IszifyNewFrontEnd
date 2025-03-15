@@ -269,7 +269,7 @@
 import { ref, onMounted, watch } from "vue";
 import { session } from "@/utils";
 import QRCodeStyling from "qr-code-styling";
-import { useToast } from "vue-toastification";
+const { $toast } = useNuxtApp();
 import { useRouter } from "vue-router";
 import LoadingSpinner from "@/components/actions/LoadingSpinner.vue";
 
@@ -279,7 +279,6 @@ const emit = defineEmits(["close"]);
 const detail = session.get("shortUrl");
 
 //  Datas
-const toast = useToast();
 const router = useRouter();
 const dots = ref(false);
 const corners = ref(false);

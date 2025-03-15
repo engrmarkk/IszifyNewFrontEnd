@@ -91,7 +91,7 @@
 import { ref } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { useAuthStore } from "@/store/auth";
-import { useToast } from "vue-toastification";
+const { $toast } = useNuxtApp();
 import LoadingSpinner from "@/components/actions/LoadingSpinner.vue";
 import ButtonLoader from "@/components/actions/ButtonLoader.vue";
 
@@ -103,7 +103,6 @@ const route = useRoute();
 const router = useRouter();
 const inputLogin = ref("password");
 const switchLoginImage = ref("eye-close.svg");
-const toast = useToast();
 const password = ref("");
 const isLoading = ref(false);
 const confirmPassword = ref("");
@@ -133,11 +132,11 @@ const handleResetPassword = async () => {
   });
 
   if (response && response.status === 200) {
-    toast.success(response?.data?.message);
+    $toast.success(response?.data?.message);
     router.push("/auths/login");
     isLoading.value = false;
   } else {
-    toast.error(response?.error?.message || "Network Error");
+    $toast.error(response?.error?.message || "Network Error");
     isLoading.value = false;
   }
 };

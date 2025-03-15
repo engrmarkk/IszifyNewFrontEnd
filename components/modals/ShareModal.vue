@@ -49,14 +49,13 @@
 
 <script setup lang="ts">
 import { ref, computed, watch } from "vue";
-import { useToast } from "vue-toastification";
+const { $toast } = useNuxtApp();
 
 const props = defineProps<{
   headerTitle: string;
   urlToShare: { short_url: string };
 }>();
 
-const toast = useToast();
 const platforms: any = ref([
   {
     name: "Facebook",
@@ -133,7 +132,7 @@ const handleCopyLink = (link: any) => {
       toast.info("Short link copied to clipboard!");
     })
     .catch((err) => {
-      toast.error("Failed to copy: ", err);
+      $toast.error("Failed to copy: ", err);
     });
 };
 </script>

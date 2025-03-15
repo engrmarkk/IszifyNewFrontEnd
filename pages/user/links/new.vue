@@ -78,7 +78,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import LoadingSpinner from "@/components/actions/LoadingSpinner.vue";
-import { useToast } from "vue-toastification";
+const { $toast } = useNuxtApp();
 const { $axiosHelper } = useNuxtApp();
 import { session } from "@/utils";
 
@@ -92,7 +92,6 @@ const sessiondata = $auth.session.value.access_token;
 
 const loading = ref(false);
 const router = useRouter();
-const toast = useToast();
 const form = ref({
   original_url: "",
   title: "",
@@ -109,12 +108,12 @@ const handlePostLink = async () => {
   );
   if (!result?.error) {
     loading.value = false;
-    toast.success(result?.data?.message);
+    $toast.success(result?.data?.message);
     handleCancelLink();
     router.push("/user/links");
   } else {
     if (result?.error) {
-      toast.error(result?.error?.message);
+      $toast.error(result?.error?.message);
       loading.value = false;
     }
   }

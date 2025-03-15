@@ -353,7 +353,7 @@
 import { ref, onMounted, nextTick } from "vue";
 import LinkQrcode from "@/components/links/LinkQrcode.vue";
 import { useRouter, useRoute } from "vue-router";
-import { useToast } from "vue-toastification";
+const { $toast } = useNuxtApp();
 import HeaderComponent from "@/components/HeaderComponent.vue";
 import LoadingSpinner from "@/components/actions/LoadingSpinner.vue";
 import QRCodeStyling from "qr-code-styling";
@@ -371,7 +371,6 @@ definePageMeta({
 
 const router = useRouter();
 const route = useRoute();
-const toast = useToast();
 const modal = ref(false);
 const qrModal = ref(false);
 const loading = ref(false);
@@ -400,13 +399,13 @@ const handleEditLink = async (item: any) => {
     sessiondata
   );
   if (!response?.error) {
-    toast.success(response?.data?.message);
+    $toast.success(response?.data?.message);
     closeEditModal();
     handelGetSingleLink();
     onLoading.value = false;
   } else {
     if (response?.error) {
-      toast.error("network error");
+      $toast.error("network error");
       console.log(response?.error?.message);
       onLoading.value = false;
     }
@@ -426,7 +425,7 @@ const handelGetSingleLink = async () => {
     loading.value = false;
   } else {
     if (result?.error) {
-      toast.error(result.error.message);
+      $toast.error(result.error.message);
       loading.value = false;
     }
   }
@@ -469,10 +468,10 @@ const handleCopyLink = (link) => {
   navigator.clipboard
     .writeText(link.short_url)
     .then(() => {
-      toast.success("Short link copied to clipboard!");
+      $toast.success("Short link copied to clipboard!");
     })
     .catch((err) => {
-      toast.error("Failed to copy: ", err);
+      $toast.error("Failed to copy: ", err);
     });
 };
 

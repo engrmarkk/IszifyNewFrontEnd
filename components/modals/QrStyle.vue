@@ -359,7 +359,7 @@ import { ref, onMounted, watch, computed } from "#imports";
 import QRCodeStyling from "qr-code-styling";
 import { useRouter } from "vue-router";
 import { session } from "@/utils";
-import { useToast } from "vue-toastification";
+const { $toast } = useNuxtApp();
 // import { axiosPost } from "@/server/utils/axiosHelper";
 import LoadingSpinner from "@/components/actions/LoadingSpinner.vue";
 const { $axiosHelper } = useNuxtApp();
@@ -376,7 +376,6 @@ const props = defineProps({
 const emit = defineEmits(["close"]);
 
 //  Datas
-const toast = useToast();
 const router = useRouter();
 const dots = ref(true);
 const corners = ref(true);
@@ -599,13 +598,13 @@ const handlePostQrCode = async () => {
   const result = await $axiosHelper.post("qr_code/qrcode", body, sessiondata);
 
   if (result && result.status === 201) {
-    toast.success(result?.data?.message);
+    $toast.success(result?.data?.message);
     emit("close");
     router.push("/user/qrcode");
     onloading.value = false;
   } else {
     if (result.error) {
-      toast.error(result?.error?.message);
+      $toast.error(result?.error?.message);
       onloading.value = false;
     }
     onloading.value = false;

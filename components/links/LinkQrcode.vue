@@ -299,7 +299,7 @@
 <script setup lang="ts">
 import { ref, onMounted, watch, computed } from "vue";
 import QRCodeStyling from "qr-code-styling";
-import { useToast } from "vue-toastification";
+const { $toast } = useNuxtApp();
 import { useRouter } from "vue-router";
 import LoadingSpinner from "@/components/actions/LoadingSpinner.vue";
 
@@ -318,7 +318,6 @@ const props = defineProps({
 const emit = defineEmits(["close"]);
 
 //  Datas
-const toast = useToast();
 const router = useRouter();
 const dots = ref(true);
 const corners = ref(true);
@@ -511,12 +510,12 @@ const handlePostQrCode = async () => {
     sessiondata
   );
   if (!result.error) {
-    toast.success(result.data.message);
+    $toast.success(result.data.message);
     emit("close");
     router.push("/admin/qrcode");
     onloading.value = false;
   } else {
-    toast.error(result.error.message);
+    $toast.error(result.error.message);
     onloading.value = false;
   }
 };

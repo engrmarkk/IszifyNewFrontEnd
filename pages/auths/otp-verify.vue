@@ -133,14 +133,13 @@ import { defineComponent, reactive, ref, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "@/store/auth";
 import { session, getStorageData } from "@/utils";
-import { useToast } from "vue-toastification";
+const { $toast } = useNuxtApp();
 import LoadingSpinner from "@/components/actions/LoadingSpinner.vue";
 
 definePageMeta({
   layout: false,
 });
 
-const toast = useToast();
 const store = useAuthStore();
 const loading = ref(false);
 const isLoading = ref(false);
@@ -236,11 +235,13 @@ const handleVerifyAcc = async () => {
       access_token: response?.data?.access_token,
     });
     initialize();
-    toast.success(response?.data?.message);
+    $toast.success(response?.data?.message);
     window.location.href = "/user";
     loading.value = false;
   } else {
-    toast.error(response.error.message || "An error occured: Please try again");
+    $toast.error(
+      response.error.message || "An error occured: Please try again"
+    );
     loading.value = false;
   }
 };
@@ -260,9 +261,11 @@ const handleResend = async () => {
 
   if (!response.error) {
     isLoading.value = false;
-    toast.success(response?.data?.message || "Email sent successfully");
+    $toast.success(response?.data?.message || "Email sent successfully");
   } else {
-    toast.error(response.error.message || "An error occured: Please try again");
+    $toast.error(
+      response.error.message || "An error occured: Please try again"
+    );
     isLoading.value = false;
   }
 };

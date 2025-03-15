@@ -131,7 +131,7 @@
 <script setup lang="ts">
 import { ref, nextTick, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { useToast } from "vue-toastification";
+const { $toast } = useNuxtApp();
 import HeaderComponent from "@/components/HeaderComponent.vue";
 import QRCodeStyling from "qr-code-styling";
 import PageAnimation from "@/components/actions/PageAnimation.vue";
@@ -150,7 +150,6 @@ const loading = ref(false);
 const isLoading = ref(false);
 const route = useRoute();
 const router = useRouter();
-const toast = useToast();
 const editTitle = ref("");
 const qrCode: any = ref<QRCodeStyling | null>(null);
 const details: any = ref(null); // Updated to null for handling object
@@ -171,7 +170,7 @@ const getSingleQrcode = async () => {
     loading.value = false;
   } else {
     if (result?.error) {
-      toast.error(result?.error?.message);
+      $toast.error(result?.error?.message);
       loading.value = false;
     }
   }
@@ -185,12 +184,12 @@ const handleUpdateQrcode = async () => {
     sessiondata
   );
   if (!result.error) {
-    toast.success(result.data.message);
+    $toast.success(result.data.message);
     getSingleQrcode();
     isLoading.value = false;
   } else {
     if (result?.error) {
-      toast.error(result?.error?.message);
+      $toast.error(result?.error?.message);
       isLoading.value = false;
     }
   }
@@ -201,10 +200,10 @@ const copyToClipboard = async (text: string | undefined) => {
     try {
       await navigator.clipboard.writeText(text);
       setTimeout(() => {
-        toast.success("Copied to clipboard");
+        $toast.success("Copied to clipboard");
       }, 2000);
     } catch (err) {
-      toast.error("Failed to copy: ", err);
+      $toast.error("Failed to copy: ", err);
     }
   }
 };
