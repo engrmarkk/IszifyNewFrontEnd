@@ -5,12 +5,6 @@ export default defineNuxtPlugin(() => {
   const router = useRouter();
   const { $auth } = useNuxtApp();
 
-  //   router.beforeEach((to, from) => {
-  //     if (to.path == "/auths/login" || to.path == "/") {
-  //       localStorage.setItem("lastVisitedRoute", to.fullPath);
-  //     }
-  //
-
   router.beforeEach((to, from) => {
     const isLeavingAuthRoute = from.path.startsWith("/user"); // Define authenticated routes
 
