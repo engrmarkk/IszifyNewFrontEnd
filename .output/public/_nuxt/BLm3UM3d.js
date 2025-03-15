@@ -1,1 +1,0 @@
-import{A as s}from"./Dq_m8wUf.js";const o=s("auth",{state:()=>({adminProfile:{},reset:!1,isLoading:!1,isLoadingReset:!1,isLoadingForgot:!1,token:null,form:{otp:"",first_name:"",last_name:"",username:"",email:"",password:"",confirmPassword:""}}),actions:{setAdminProfile(e){this.adminProfile=e}}});export{o as u};

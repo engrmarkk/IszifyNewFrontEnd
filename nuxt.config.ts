@@ -31,6 +31,7 @@ export default defineNuxtConfig({
     layoutTransition: false, // Disable layout transition loader
     pageTransition: false, // Disable page transition loader
     head: {
+      link: [],
       title: "Iszify | Create QR Codes, Short URL & Bio Link Pages",
       meta: [
         {
