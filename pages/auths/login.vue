@@ -156,7 +156,8 @@ const login = async () => {
     }),
       store.setAdminProfile({ access_token: response?.data?.access_token });
     $toast.success("Login successful");
-    const lastVisitedRoute = localStorage.getItem("lastVisitedRoute") || "/";
+    const lastVisitedRoute =
+      localStorage.getItem("lastVisitedRoute") || "/user";
     router.replace(lastVisitedRoute);
     isLoading.value = false;
   } else {

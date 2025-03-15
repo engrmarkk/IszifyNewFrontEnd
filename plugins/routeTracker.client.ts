@@ -3,9 +3,18 @@ import { useRouter } from "vue-router";
 
 export default defineNuxtPlugin(() => {
   const router = useRouter();
+  const { $auth } = useNuxtApp();
 
-  router.beforeEach((to) => {
-    if (to.path !== "/auths/login") {
+  //   router.beforeEach((to, from) => {
+  //     if (to.path == "/auths/login" || to.path == "/") {
+  //       localStorage.setItem("lastVisitedRoute", to.fullPath);
+  //     }
+  //
+
+  router.beforeEach((to, from) => {
+    const isLeavingAuthRoute = from.path.startsWith("/user"); // Define authenticated routes
+
+    if ($auth.isAuthenticated.value && isLeavingAuthRoute) {
       localStorage.setItem("lastVisitedRoute", to.fullPath);
     }
   });
