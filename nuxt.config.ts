@@ -2,7 +2,6 @@
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
-  ssr: false, // Ensure SSR is disabled for static builds
   target: "static", // Important for static site generation
 
   modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt"],
