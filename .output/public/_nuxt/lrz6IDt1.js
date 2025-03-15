@@ -1,0 +1,1 @@
+import{e as o,_ as r,c as n,o as t,a as s,x as a}from"./Dq_m8wUf.js";const c=o({props:{color:{type:String}},setup(){return{}}});function d(e,i,p,l,u,f){return t(),n("div",null,[s("div",{class:a(["animate-spin border-4 border-dotted border-r-info-tint to-90% h-5 w-5 mr-3 rounded-full",`border-${e.color}`])},null,2)])}const _=r(c,[["render",d]]);export{_ as L};

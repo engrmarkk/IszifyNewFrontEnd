@@ -1,0 +1,1 @@
+import{e as a,c as o,o as l,a as t,t as s}from"./Dq_m8wUf.js";const n={class:"text-base md:text-xl lg:text-2xl font-bold text-black uppercase"},c={class:"text-xs text-accent capitalize"},_=a({__name:"HeaderComponent",props:{title:{},subTitle:{}},setup(p){return(e,i)=>(l(),o("div",null,[t("h2",n,s(e.title),1),t("p",c,s(e.subTitle),1)]))}});export{_};

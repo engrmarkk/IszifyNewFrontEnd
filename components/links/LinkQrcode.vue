@@ -297,15 +297,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-  ref,
-  onMounted,
-  watch,
-  defineProps,
-  defineEmits,
-  PropType,
-  computed,
-} from "vue";
+import { ref, onMounted, watch, computed } from "vue";
 import QRCodeStyling from "qr-code-styling";
 import { useToast } from "vue-toastification";
 import { useRouter } from "vue-router";
