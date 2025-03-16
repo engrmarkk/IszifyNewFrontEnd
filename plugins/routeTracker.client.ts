@@ -9,7 +9,7 @@ export default defineNuxtPlugin(() => {
     const isLeavingAuthRoute = from.path.startsWith("/user"); // Define authenticated routes
 
     if ($auth.isAuthenticated.value && isLeavingAuthRoute) {
-      localStorage.setItem("lastVisitedRoute", to.fullPath);
+      localStorage.setItem("lastVisitedRoute", from.fullPath);
     }
   });
 });
